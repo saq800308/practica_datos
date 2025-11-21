@@ -7,9 +7,11 @@ lista=[]#creamos la lista donde van a venir las personas
 #creamos el menu
 while True:
     print("\nMENU")
-    print("1. Agreagar persona")
+    print("1. Agregar persona")
     print("2. ver lista")
     print("3. Consultar persona")
+    print("4. Borrar persona")
+    print("5. Modificar Persona")
     print("o. Salir")
 
     opcion=input("elige la opcion:")#variable para eligir la opccion
@@ -32,6 +34,16 @@ while True:
         menu=input("Enter para continuar")
 
     #se sale del bucle
+    elif opcion=="4":
+        if not lista:
+            print("La lista esta vacia")
+        else:
+            l.borrar(lista)
+    elif opcion=="5":
+        if not lista:
+            print("La lista esta vacia")
+        else:
+            l.modificar(lista)
     elif opcion=="0":
         break
     
