@@ -18,12 +18,7 @@ while True:
     
     #pedimos los datos para crear una persona en la lista
     if opcion=="1":
-        nombre=input("\ningresa nombre: ")
-        ciudad=input("ingresa ciudad: ")
-        documento=input("ingresa numero de documento: ")
-        edad=int(input("ingresa edad: "))
-        pe=Persona(documento,nombre,edad,ciudad)#creamos un objeto en la case persona
-        lista.append(pe)
+        l.agregar(lista)
         menu=input("Enter para continuar")
     
     #muestar todas las personas de la lista
