@@ -3,8 +3,6 @@ from Persona import Persona
 from typing import List
 
 #se crea la clase Lista
-#lista=[]#creamos la lista donde van a venir las personas
-
 class Lista(Persona):
     #se define las caracteristicas de Lista
     def __init__(self,listapersona):
@@ -38,13 +36,16 @@ class Lista(Persona):
     #se crea la funcion de mostrar todas las personas de la lista 
     def mostrarlista(self)->Persona:
         x=0
-        for persona in self.listapersona:
-            x+=1
-            print(x,". Nonbre:",persona.nombre," edad:",persona.edad," N. documento:",persona.documento," ciudad:",persona.ciudad)
+        if self.listapersona:#verifica que lista no este vacia 
+            for persona in self.listapersona:
+                x+=1
+                print(x,". Nonbre:",persona.nombre," edad:",persona.edad," N. documento:",persona.documento," ciudad:",persona.ciudad)
+        else:
+            print("No hay personas en la lista")
 
     #funcion para consultar personas consultar persona 
     def consultar(self)->Persona:
-        if self.listapersona:
+        if self.listapersona:#verifica que la lista no este vacia
             for persona in self.listapersona:#recorrela lista 
                 buscardor=input("ingresa nombre o documento")#ingresa el documento o nombre a buscar 
                 if persona.nombre == buscardor:

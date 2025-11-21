@@ -1,4 +1,4 @@
-#importacion de archivos nesesarios 
+#importacion de archivos necesarios 
 from Persona import Persona
 from Lista import Lista
 
@@ -14,9 +14,9 @@ while True:
 
     opcion=input("elige la opcion:")#variable para eligir la opccion
 
-    l=Lista(lista)#llamamos la intancia de Lista
+    l=Lista(lista)#llamamos la instancia de Lista
     
-    #pedimos los datos para crear una persona en la lista
+    #Agrega personas a la lista
     if opcion=="1":
         l.agregar(lista)
         menu=input("Enter para continuar")
