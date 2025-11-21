@@ -11,24 +11,24 @@ class Lista(Persona):
     def agregar(self,lista):
         #pide la informacion 
         nombre=input("\ningresa nombre: ")
-        ciudad=input("ingresa ciudad: ")
+        ciudad=input("ingresa ciudad: ")    
         documento=input("ingresa numero de documento: ")
         while True:
-            edad=int(input("ingresa edad: "))
-            if edad>0:
-                break
+            edad=input("ingresa edad: ")
+            if edad.isdigit():
+                edad=int(edad)
+                if edad>0:
+                    break
             else:
                 print("edad no valida")
         #verifica que listapersona no este vacio
         if self.listapersona:
             #si esta llena verifica que el documento no este repetido 
-            for persona in self.listapersona:
-                if persona.documento != documento:
-                    pe=Persona(documento,nombre,edad,ciudad)
-                    return lista.append(pe)
-                else:
-                    return print("esta persona ya existe")
-        #si esta vacia solo los agrega       
+            while any(p.documento == documento for p in lista):
+                documento=input("El documento ya existe, ingrese otro: ")
+                pe=Persona(documento,nombre,edad,ciudad)             
+            return lista.append(pe)
+        #si esta vacia solo los agrega     
         else:
             pe=Persona(documento,nombre,edad,ciudad)
             return lista.append(pe)
@@ -39,7 +39,7 @@ class Lista(Persona):
         if self.listapersona:#verifica que lista no este vacia 
             for persona in self.listapersona:
                 x+=1
-                print(x,". Nonbre:",persona.nombre," edad:",persona.edad," N. documento:",persona.documento," ciudad:",persona.ciudad)
+                print(x,". Nombre:",persona.nombre," edad:",persona.edad," N. documento:",persona.documento," ciudad:",persona.ciudad)
         else:
             print("No hay personas en la lista")
 
@@ -56,3 +56,24 @@ class Lista(Persona):
                     print("no se encontro persona")
         else:#funcion si la lista esta vacia 
             print("la lista esta vacia")
+    def borrar(self,lista): #funcion borrar para borrar un elemento de la lista
+        docu=input("Ingrese el numero de documento de la persona que desea borrar: ")
+        for i,lis in enumerate(lista): #for que enumera los objetos para borrarlos con mas facilidad i es el numero de objeto y lis seria el objeto
+            if docu==lis.documento: #si el documento a buscaar coicide con el documento del objeto entonces
+                del lista[i] #se borra el objeto
+                print("Persona borrada.")
+            else:
+                print("No existe esa persona.")
+    def modificar(self,lista): #modifica todos los daaatos de un documento
+        docu=input("Ingrese el numero de documento de la persona que desea modificar: ")
+        for lis in lista: #se hace un ciclo que recorre todos los objetos de la listaa
+            if docu==lis.documento: #si el documento ingresdao coincide con el del objeto entonces
+                lis.nombre=input("Ingrese el nuevo nombre: ") #aca se piden todos los daatos nuevos del objeto
+                lis.edad=input("Ingrese la nueva edad: ")
+                while lis.edad.isdigit()==False: #comprueb que laa edad sea un numero y no letras
+                    lis.edad=input("Edad no es numero, ingrese de nuevo: ")
+                lis.documento=input("Ingrese el nuevo documento: ")
+                lis.ciudad=input("Ingrese la nueva ciudad: ")
+                print("Persona modificada.")
+            else:
+                print("No existe esa persona.")
